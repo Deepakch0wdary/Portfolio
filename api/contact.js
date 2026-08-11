@@ -197,7 +197,7 @@ export default async function handler(req, res) {
     // 9. Route notification to Twilio WhatsApp client if configured
     if (twilioValid) {
       try {
-        await sendWhatsAppNotification({
+        const twilioResult = await sendWhatsAppNotification({
           firstName: sanitizedFirstName,
           lastName: sanitizedLastName,
           email: sanitizedEmail,
@@ -205,7 +205,9 @@ export default async function handler(req, res) {
           message: sanitizedMessage,
           date: formattedDate
         });
-        whatsappSuccess = true;
+        if (twilioResult?.success) {
+          whatsappSuccess = true;
+        }
       } catch (error) {
         console.error("[Contact API Twilio Dispatch Error]:", error?.message || error);
       }
