@@ -1,0 +1,91 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Satoshi", sans-serif;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #fff;
+}
+
+[data-aos="drop-bounce"] {
+  opacity: 0;
+}
+[data-aos="drop-bounce"].aos-animate {
+  animation: dropBounce 1.2s cubic-bezier(0.28, 0.84, 0.42, 1) forwards;
+}
+
+@keyframes dropBounce {
+  0% { transform: translateY(-300px); opacity: 0; }
+  50% { transform: translateY(0); opacity: 1; }
+  65% { transform: translateY(-40px); opacity: 1; }
+  80% { transform: translateY(0); opacity: 1; }
+  90% { transform: translateY(-15px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@layer base {
+  /* Body Text -> Satoshi Regular (400) */
+  body, p, span, div, a {
+    font-weight: 400 !important;
+  }
+
+  /* Hero Heading -> Satoshi Black (900) */
+  h1, #home h1, #hero h1, h1 * {
+    font-weight: 900 !important;
+  }
+
+  /* Section Heading -> Satoshi Bold (700) */
+  h2, h3, h4, h5, h6 {
+    font-weight: 700 !important;
+  }
+
+  /* Navbar -> Satoshi Medium (500) */
+  nav, nav *, header *, #navbar * {
+    font-weight: 500 !important;
+  }
+
+  /* Buttons -> Satoshi Medium (500) */
+  button, 
+  a[class*="px-"][class*="py-"], 
+  input[type="submit"], 
+  .btn {
+    font-weight: 500 !important;
+  }
+}
+
+/* Ensure inputs and textareas in contact form remain transparent and clean */
+input, textarea {
+  background-color: transparent !important;
+  color: #fff !important;
+}
+
+/* Override browser autofill box background styling */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #ff2a2a inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  caret-color: #ffffff !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
